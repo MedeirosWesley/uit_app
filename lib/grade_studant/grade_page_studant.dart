@@ -5,6 +5,7 @@ import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 
 import '../models/subject_student_model.dart';
+import '../widgets/custom_label.dart';
 
 class GradePage extends StatelessWidget {
   const GradePage({super.key});
@@ -18,10 +19,13 @@ class GradePage extends StatelessWidget {
         color: Colors.teal.shade300,
         child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
           Padding(
-            padding: const EdgeInsets.all(8.0),
+            padding: const EdgeInsets.all(12.0),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
+                const SizedBox(
+                  height: 30,
+                ),
                 Text(
                   student.course,
                   style: defaultTextStyleTitlePage,
@@ -60,7 +64,7 @@ class GradePage extends StatelessWidget {
     for (var element in subjects) {
       list.add(_card(element));
     }
-    list.add(SizedBox(
+    list.add(const SizedBox(
       height: 50,
     ));
     return list;
@@ -103,12 +107,15 @@ class GradePage extends StatelessWidget {
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  custonLabel(
-                      'Nota 1', subject.grade1 == '' ? '-' : subject.grade1),
-                  custonLabel(
-                      'Nota 2', subject.grade2 == '' ? '-' : subject.grade2),
-                  custonLabel(
-                      'Nota 3', subject.grade3 == '' ? '-' : subject.grade3),
+                  CustomLabel(
+                      label1: 'Nota 1',
+                      label2: subject.grade1 == '' ? '-' : subject.grade1),
+                  CustomLabel(
+                      label1: 'Nota 2',
+                      label2: subject.grade2 == '' ? '-' : subject.grade2),
+                  CustomLabel(
+                      label1: 'Nota 3',
+                      label2: subject.grade3 == '' ? '-' : subject.grade3),
                 ],
               ),
               Column(
@@ -189,36 +196,7 @@ class GradePage extends StatelessWidget {
     );
   }
 
-  Widget custonLabel(String label1, String label2) {
-    return Row(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Text(
-          '$label1: ',
-          style: const TextStyle(
-              fontSize: 16,
-              fontWeight: FontWeight.w600,
-              color: Colors.black,
-              decoration: TextDecoration.none),
-          overflow: TextOverflow.fade,
-          maxLines: 3,
-        ),
-        Text(
-          label2,
-          style: const TextStyle(
-              fontSize: 16,
-              fontWeight: FontWeight.normal,
-              color: Colors.black,
-              decoration: TextDecoration.none),
-          overflow: TextOverflow.fade,
-          maxLines: 3,
-        ),
-      ],
-    );
-  }
-
   List<PieChartSectionData> showingSections(double value1, double value2) {
-    print(value1);
     return List.generate(2, (i) {
       const fontSize = 10.0;
       const radius = 30.0;
@@ -228,7 +206,7 @@ class GradePage extends StatelessWidget {
           return PieChartSectionData(
             color: Colors.teal.shade300,
             value: value1,
-            title: '${(100 - (value2 / value1 * 100)).truncate()} %',
+            title: '${(100 - (value2 / value1 * 100)).truncate()}%',
             radius: radius,
             titleStyle: const TextStyle(
               fontSize: fontSize,

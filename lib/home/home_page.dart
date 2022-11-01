@@ -1,7 +1,7 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
-import 'aluno_home_page.dart';
+import 'student_home_page.dart';
+import 'teacher_home_page.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -52,7 +52,7 @@ class _HomePageState extends State<HomePage> {
   }
 
   List<Widget> _buildScreens() {
-    return [const AlunoHomePage(), Container()];
+    return [const TeacherHomePage(), Container()];
   }
 
   List<PersistentBottomNavBarItem> _navBarsItems() {

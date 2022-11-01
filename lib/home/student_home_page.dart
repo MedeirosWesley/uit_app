@@ -1,20 +1,18 @@
 import 'package:app_uit/consts.dart';
-import 'package:app_uit/models/student_model.dart';
 import 'package:app_uit/models/user_model.dart';
 import 'package:app_uit/widgets/home_menu_widget.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import '../grade_studant/grade_page_studant.dart';
 
-class AlunoHomePage extends StatefulWidget {
-  const AlunoHomePage({Key? key}) : super(key: key);
+class StudentHomePage extends StatefulWidget {
+  const StudentHomePage({Key? key}) : super(key: key);
 
   @override
-  State<AlunoHomePage> createState() => _AlunoHomePageState();
+  State<StudentHomePage> createState() => _StudentHomePageState();
 }
 
-class _AlunoHomePageState extends State<AlunoHomePage> {
+class _StudentHomePageState extends State<StudentHomePage> {
   @override
   Widget build(BuildContext context) {
     UserModel user = UserModel.teste();
