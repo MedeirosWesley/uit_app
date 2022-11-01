@@ -41,14 +41,16 @@ class HomeMenu extends StatelessWidget {
                   child: Text(
                     title,
                     style: defaultTextTitleStyle,
-                    overflow: TextOverflow.fade,
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
                   ),
                 ),
                 Expanded(
                   child: Text(
                     label,
                     style: defaultTextlabelStyle,
-                    overflow: TextOverflow.fade,
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
                   ),
                 ),
               ],

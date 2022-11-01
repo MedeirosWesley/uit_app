@@ -1,4 +1,6 @@
 import 'package:app_uit/consts.dart';
+import 'package:app_uit/models/student_model.dart';
+import 'package:app_uit/models/user_model.dart';
 import 'package:app_uit/widgets/home_menu_widget.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -15,6 +17,7 @@ class AlunoHomePage extends StatefulWidget {
 class _AlunoHomePageState extends State<AlunoHomePage> {
   @override
   Widget build(BuildContext context) {
+    UserModel user = UserModel.teste();
     Size size = MediaQuery.of(context).size;
     return Container(
       height: 200,
@@ -53,14 +56,13 @@ class _AlunoHomePageState extends State<AlunoHomePage> {
                         decoration: BoxDecoration(
                             color: Colors.amber,
                             borderRadius: BorderRadius.circular(20),
-                            image: const DecorationImage(
-                                image: NetworkImage(
-                                    'https://www.pngall.com/wp-content/uploads/12/Avatar-Profile-Vector-PNG-File.png'))),
+                            image: DecorationImage(
+                                image: NetworkImage(user.imageProfile))),
                       ),
                     ),
                     Expanded(
                         child: Text(
-                      'Wesley Medeiros da Cruz',
+                      user.name,
                       style: defaultTextlabelBoldStyle,
                     )),
                     IconButton(

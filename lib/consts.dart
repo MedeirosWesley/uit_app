@@ -28,3 +28,33 @@ TextStyle defaultTextTitleStyle = GoogleFonts.lato(
     fontSize: 20);
 TextStyle defaultTextStyleBold =
     GoogleFonts.lato(color: Colors.black, fontWeight: FontWeight.w500);
+
+
+// Column(
+//                 children: [
+//                   Container(
+//                     margin: const EdgeInsets.all(8),
+//                     padding: const EdgeInsets.symmetric(horizontal: 10),
+//                     height: 50,
+//                     width: 50,
+//                     decoration: BoxDecoration(
+//                         borderRadius: BorderRadius.circular(10),
+//                         border: Border.all(color: Colors.teal)),
+//                     child: Material(
+//                       child: TextField(
+//                         keyboardType: TextInputType.number,
+//                         maxLength: 2,
+//                         style: defaultTextStyleInput,
+//                         decoration: const InputDecoration(
+//                           counterText: '',
+//                           border: InputBorder.none,
+//                         ),
+//                       ),
+//                     ),
+//                   ),
+//                   Text(
+//                     'Total parcial',
+//                     style: defaultTextlabelStyle,
+//                   )
+//                 ],
+//               )

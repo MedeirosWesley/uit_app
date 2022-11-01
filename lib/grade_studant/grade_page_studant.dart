@@ -1,13 +1,18 @@
 import 'package:app_uit/consts.dart';
+import 'package:app_uit/models/student_model.dart';
+import 'package:app_uit/models/user_model.dart';
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
+
+import '../models/subject_student_model.dart';
 
 class GradePage extends StatelessWidget {
   const GradePage({super.key});
 
   @override
   Widget build(BuildContext context) {
+    UserModel user = UserModel.teste();
+    StudentModel student = StudentModel.teste();
     Size size = MediaQuery.of(context).size;
     return Container(
         color: Colors.teal.shade300,
@@ -18,14 +23,14 @@ class GradePage extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  'Ciência da\nComputação',
+                  student.course,
                   style: defaultTextStyleTitlePage,
                 ),
                 const SizedBox(
                   height: 8,
                 ),
                 Text(
-                  'Wesley Medeiros da Cruz - 80000',
+                  '${user.name} - ${user.ciu}',
                   style: defaultTextStyleUserTitle,
                 )
               ],
@@ -42,13 +47,35 @@ class GradePage extends StatelessWidget {
                       borderRadius: BorderRadius.only(
                           topLeft: Radius.circular(20),
                           topRight: Radius.circular(20))),
-                  child: Column(
-                    children: [_card()],
+                  child: SingleChildScrollView(
+                    child: Column(
+                      children: getsubjectsMenus(student.subjects),
+                    ),
                   )))
         ]));
   }
 
-  Widget _card() {
+  List<Widget> getsubjectsMenus(List<SubjectStudentModel> subjects) {
+    List<Widget> list = [];
+    for (var element in subjects) {
+      list.add(_card(element));
+    }
+    list.add(SizedBox(
+      height: 50,
+    ));
+    return list;
+  }
+
+  double getTotalgrade(String value1, String value2, String value3) {
+    if (value1 == '') return 0;
+    if (value2 == '') return double.parse(value1);
+    if (value3 == '') return double.parse(value1) + double.parse(value1);
+    return double.parse(value1) + double.parse(value1) + double.parse(value3);
+  }
+
+  Widget _card(SubjectStudentModel subject) {
+    double totalGrade =
+        getTotalgrade(subject.grade1, subject.grade2, subject.grade3);
     return Container(
       padding: const EdgeInsets.only(left: 20, right: 20, top: 8),
       margin: const EdgeInsets.only(left: 20, right: 20, top: 15),
@@ -60,9 +87,10 @@ class GradePage extends StatelessWidget {
             BoxShadow(color: Colors.grey, blurRadius: 5, offset: Offset(2, 2))
           ]),
       child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            'Fundamentos Téoricos da Computação',
+            subject.name,
             style: defaultTextStyleSubtitle,
             overflow: TextOverflow.ellipsis,
           ),
@@ -75,33 +103,29 @@ class GradePage extends StatelessWidget {
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  custonLabel('Nota 1', '20'),
-                  custonLabel('Nota 2', '22'),
-                  custonLabel('Nota 3', '-'),
+                  custonLabel(
+                      'Nota 1', subject.grade1 == '' ? '-' : subject.grade1),
+                  custonLabel(
+                      'Nota 2', subject.grade2 == '' ? '-' : subject.grade2),
+                  custonLabel(
+                      'Nota 3', subject.grade3 == '' ? '-' : subject.grade3),
                 ],
               ),
               Column(
                 children: [
                   Container(
-                    margin: const EdgeInsets.all(8),
-                    padding: const EdgeInsets.symmetric(horizontal: 10),
-                    height: 50,
-                    width: 50,
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(10),
-                        border: Border.all(color: Colors.teal)),
-                    child: Material(
-                      child: TextField(
-                        keyboardType: TextInputType.number,
-                        maxLength: 2,
-                        style: defaultTextStyleInput,
-                        decoration: const InputDecoration(
-                          counterText: '',
-                          border: InputBorder.none,
+                      margin: const EdgeInsets.all(8),
+                      height: 50,
+                      width: 80,
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(10),
+                          border: Border.all(color: Colors.teal)),
+                      child: Center(
+                        child: Text(
+                          totalGrade.toString(),
+                          style: defaultTextStyleInput,
                         ),
-                      ),
-                    ),
-                  ),
+                      )),
                   Text(
                     'Total parcial',
                     style: defaultTextlabelStyle,
@@ -122,7 +146,7 @@ class GradePage extends StatelessWidget {
                     height: 8,
                   ),
                   Text(
-                    '4',
+                    subject.absence,
                     style: defaultTextStyleInput,
                   )
                 ],
@@ -131,7 +155,7 @@ class GradePage extends StatelessWidget {
                 children: [
                   Padding(
                     padding: const EdgeInsets.symmetric(
-                        horizontal: 8.0, vertical: 5),
+                        horizontal: 20.0, vertical: 5),
                     child: SizedBox(
                       height: 50,
                       width: 50,
@@ -142,7 +166,9 @@ class GradePage extends StatelessWidget {
                           ),
                           sectionsSpace: 2,
                           centerSpaceRadius: 0,
-                          sections: showingSections(),
+                          sections: showingSections(
+                              double.parse(subject.totalClasses),
+                              double.parse(subject.absence)),
                         ),
                       ),
                     ),
@@ -191,17 +217,18 @@ class GradePage extends StatelessWidget {
     );
   }
 
-  List<PieChartSectionData> showingSections() {
+  List<PieChartSectionData> showingSections(double value1, double value2) {
+    print(value1);
     return List.generate(2, (i) {
-      const fontSize = 12.0;
+      const fontSize = 10.0;
       const radius = 30.0;
 
       switch (i) {
         case 0:
           return PieChartSectionData(
             color: Colors.teal.shade300,
-            value: 70,
-            title: '70%',
+            value: value1,
+            title: '${(100 - (value2 / value1 * 100)).truncate()} %',
             radius: radius,
             titleStyle: const TextStyle(
               fontSize: fontSize,
@@ -213,7 +240,7 @@ class GradePage extends StatelessWidget {
         case 1:
           return PieChartSectionData(
             color: Colors.red.shade300,
-            value: 30,
+            value: value2,
             title: '',
             radius: radius,
             titleStyle: const TextStyle(
