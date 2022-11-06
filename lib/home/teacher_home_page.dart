@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import '../consts.dart';
 import '../grade_teacher/grade_teacher_page.dart';
 import '../models/user_model.dart';
+import '../presence_lauch/presence_page.dart';
 import '../widgets/custom_label.dart';
 
 class TeacherHomePage extends StatelessWidget {
@@ -199,8 +200,7 @@ class TeacherHomePage extends StatelessWidget {
                     onTap: () => Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) =>
-                              GradeTeacherPage(subject: subject),
+                          builder: (context) => PresencePage(subject: subject),
                         )),
                     child: Container(
                         margin: const EdgeInsets.all(8),

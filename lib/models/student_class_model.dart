@@ -1,7 +1,11 @@
 import 'dart:convert';
+import 'dart:math';
 
 class StudentClassModel {
   String name;
+  String grade1;
+  String grade2;
+  String grade3;
   String ciu;
   String imageProfile;
   bool isPresent1;
@@ -9,6 +13,9 @@ class StudentClassModel {
 
   StudentClassModel({
     required this.name,
+    required this.grade1,
+    required this.grade2,
+    required this.grade3,
     required this.ciu,
     required this.imageProfile,
     required this.isPresent1,
@@ -61,11 +68,14 @@ class StudentClassModel {
       'https://www.pngall.com/wp-content/uploads/12/Avatar-PNG-File.png',
       'https://www.pngall.com/wp-content/uploads/12/Avatar-Profile-Vector-PNG-File.png'
     ];
-
+    var rng = Random();
     List.generate(
         20,
         (index) => list.add(StudentClassModel(
             name: names[index],
+            grade1: (rng.nextInt(15) + 15).toString(),
+            grade2: (rng.nextInt(15) + 15).toString(),
+            grade3: '-',
             ciu: (80000 + index).toString(),
             imageProfile: images[index],
             isPresent1: true,
@@ -88,6 +98,9 @@ class StudentClassModel {
     return StudentClassModel(
       name: map['name'] as String,
       ciu: map['ciu'] as String,
+      grade1: map['grade1'] as String,
+      grade2: map['grade2'] as String,
+      grade3: map['grade3'] as String,
       imageProfile: map['imageProfile'] as String,
       isPresent1: map['isPresent1'] as bool,
       isPresent2: map['isPresent2'] as bool,

@@ -14,6 +14,11 @@ TextStyle defaultTextStyleInput = GoogleFonts.lato(
     fontWeight: FontWeight.bold,
     fontSize: 22,
     decoration: TextDecoration.none);
+TextStyle textStyleInput = GoogleFonts.lato(
+    color: Colors.black,
+    fontWeight: FontWeight.bold,
+    fontSize: 26,
+    decoration: TextDecoration.none);
 TextStyle defaultTextStyleUserTitle = GoogleFonts.lato(
     color: Colors.white, fontSize: 14, decoration: TextDecoration.none);
 TextStyle defaultTextlabelBoldStyle = GoogleFonts.lato(
@@ -28,33 +33,3 @@ TextStyle defaultTextTitleStyle = GoogleFonts.lato(
     fontSize: 20);
 TextStyle defaultTextStyleBold =
     GoogleFonts.lato(color: Colors.black, fontWeight: FontWeight.w500);
-
-
-// Column(
-//                 children: [
-//                   Container(
-//                     margin: const EdgeInsets.all(8),
-//                     padding: const EdgeInsets.symmetric(horizontal: 10),
-//                     height: 50,
-//                     width: 50,
-//                     decoration: BoxDecoration(
-//                         borderRadius: BorderRadius.circular(10),
-//                         border: Border.all(color: Colors.teal)),
-//                     child: Material(
-//                       child: TextField(
-//                         keyboardType: TextInputType.number,
-//                         maxLength: 2,
-//                         style: defaultTextStyleInput,
-//                         decoration: const InputDecoration(
-//                           counterText: '',
-//                           border: InputBorder.none,
-//                         ),
-//                       ),
-//                     ),
-//                   ),
-//                   Text(
-//                     'Total parcial',
-//                     style: defaultTextlabelStyle,
-//                   )
-//                 ],
-//               )

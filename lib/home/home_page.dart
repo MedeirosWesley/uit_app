@@ -52,7 +52,7 @@ class _HomePageState extends State<HomePage> {
   }
 
   List<Widget> _buildScreens() {
-    return [const TeacherHomePage(), Container()];
+    return [const StudentHomePage(), Container()];
   }
 
   List<PersistentBottomNavBarItem> _navBarsItems() {

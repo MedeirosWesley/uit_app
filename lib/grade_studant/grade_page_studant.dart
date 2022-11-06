@@ -27,8 +27,9 @@ class GradePage extends StatelessWidget {
                   height: 30,
                 ),
                 Text(
-                  student.course,
+                  student.course.replaceFirst(' ', '\n'),
                   style: defaultTextStyleTitlePage,
+                  overflow: TextOverflow.ellipsis,
                 ),
                 const SizedBox(
                   height: 8,
@@ -36,6 +37,7 @@ class GradePage extends StatelessWidget {
                 Text(
                   '${user.name} - ${user.ciu}',
                   style: defaultTextStyleUserTitle,
+                  overflow: TextOverflow.ellipsis,
                 )
               ],
             ),

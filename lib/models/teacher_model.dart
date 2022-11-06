@@ -22,7 +22,7 @@ class TeacherModel {
                     workload: '72 h',
                     modality: 'Presencial')
                 : SubjectTeacherModel(
-                    name: 'Programação paralela',
+                    name: 'Programação Paralela',
                     day: 'Quarta-feira',
                     shift: 'Noturno',
                     startDate: '02/02/2022',

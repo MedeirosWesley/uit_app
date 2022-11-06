@@ -4,6 +4,7 @@ import 'package:app_uit/widgets/home_menu_widget.dart';
 import 'package:flutter/material.dart';
 
 import '../grade_studant/grade_page_studant.dart';
+import '../protocols/protocols_view_page.dart';
 
 class StudentHomePage extends StatefulWidget {
   const StudentHomePage({Key? key}) : super(key: key);
@@ -52,7 +53,7 @@ class _StudentHomePageState extends State<StudentHomePage> {
                         height: 40,
                         width: 40,
                         decoration: BoxDecoration(
-                            color: Colors.amber,
+                            color: Colors.blueAccent,
                             borderRadius: BorderRadius.circular(20),
                             image: DecorationImage(
                                 image: NetworkImage(user.imageProfile))),
@@ -97,7 +98,7 @@ class _StudentHomePageState extends State<StudentHomePage> {
                       onTap: () => Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => const GradePage(),
+                            builder: (context) => const ProtocolViewPage(),
                           )),
                     ),
                     HomeMenu(
