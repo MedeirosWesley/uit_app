@@ -73,7 +73,7 @@ class _SendProtocolPageState extends State<SendProtocolPage> {
                       ),
                       _getcard(
                           'Carga horária:',
-                          TextField(
+                          const TextField(
                             decoration:
                                 InputDecoration(border: InputBorder.none),
                           ))
