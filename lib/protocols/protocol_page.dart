@@ -17,18 +17,22 @@ class _ProtocolPageState extends State<ProtocolPage> {
     return Container(
         color: Colors.teal.shade300,
         child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+          const SizedBox(
+            width: 12.0,
+            height: 30,
+          ),
+          IconButton(
+              onPressed: (() => Navigator.pop(context)),
+              icon: const Icon(
+                Icons.arrow_back,
+                color: Colors.white,
+              )),
           Padding(
-            padding: const EdgeInsets.only(
-              left: 12.0,
-              top: 30,
-            ),
-            child: Padding(
-              padding: const EdgeInsets.all(12.0),
-              child: Text(
-                'Nova\nSolicitação',
-                style: defaultTextStyleTitlePage,
-                overflow: TextOverflow.ellipsis,
-              ),
+            padding: const EdgeInsets.only(left: 15.0),
+            child: Text(
+              'Nova\nSolicitação',
+              style: defaultTextStyleTitlePage,
+              overflow: TextOverflow.ellipsis,
             ),
           ),
           const SizedBox(

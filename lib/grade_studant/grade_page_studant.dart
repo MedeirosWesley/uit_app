@@ -18,29 +18,37 @@ class GradePage extends StatelessWidget {
     return Container(
         color: Colors.teal.shade300,
         child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-          Padding(
-            padding: const EdgeInsets.all(12.0),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                const SizedBox(
-                  height: 30,
-                ),
-                Text(
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              const SizedBox(
+                height: 30,
+              ),
+              IconButton(
+                  onPressed: (() => Navigator.pop(context)),
+                  icon: const Icon(
+                    Icons.arrow_back,
+                    color: Colors.white,
+                  )),
+              Padding(
+                padding: const EdgeInsets.only(left: 15.0),
+                child: Text(
                   student.course.replaceFirst(' ', '\n'),
                   style: defaultTextStyleTitlePage,
                   overflow: TextOverflow.ellipsis,
                 ),
-                const SizedBox(
-                  height: 8,
-                ),
-                Text(
-                  '${user.name} - ${user.ciu}',
-                  style: defaultTextStyleUserTitle,
-                  overflow: TextOverflow.ellipsis,
-                )
-              ],
-            ),
+              ),
+              const SizedBox(
+                height: 8,
+              ),
+              Padding(
+                  padding: const EdgeInsets.only(left: 15.0),
+                  child: Text(
+                    '${user.name} - ${user.ciu}',
+                    style: defaultTextStyleUserTitle,
+                    overflow: TextOverflow.ellipsis,
+                  ))
+            ],
           ),
           const SizedBox(
             height: 20,

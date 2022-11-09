@@ -1,3 +1,4 @@
+import 'package:app_uit/calendar/calendar_page.dart';
 import 'package:app_uit/consts.dart';
 import 'package:app_uit/models/user_model.dart';
 import 'package:app_uit/widgets/home_menu_widget.dart';
@@ -108,7 +109,7 @@ class _StudentHomePageState extends State<StudentHomePage> {
                       onTap: () => Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => const GradePage(),
+                            builder: (context) => const CalendarPage(),
                           )),
                     ),
                     HomeMenu(

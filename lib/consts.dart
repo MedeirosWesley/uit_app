@@ -7,6 +7,11 @@ TextStyle defaultTextStyleTitlePage = GoogleFonts.lato(
     color: Colors.white, fontSize: 38, decoration: TextDecoration.none);
 TextStyle defaultTextStyleSubtitle = GoogleFonts.lato(
     color: Colors.teal, fontSize: 18, decoration: TextDecoration.none);
+TextStyle textStyleButton = GoogleFonts.lato(
+    fontWeight: FontWeight.bold,
+    color: Colors.teal,
+    fontSize: 18,
+    decoration: TextDecoration.none);
 TextStyle defaultTextStyle = GoogleFonts.lato(
     color: Colors.black, fontSize: 14, decoration: TextDecoration.none);
 TextStyle defaultTextStyleInput = GoogleFonts.lato(
