@@ -1,9 +1,11 @@
 import 'package:app_uit/models/subject_teacher_model.dart';
 import 'package:app_uit/models/teacher_model.dart';
 import 'package:flutter/material.dart';
+import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
 
 import '../consts.dart';
 import '../grade_teacher/grade_teacher_page.dart';
+import '../login/login_page.dart';
 import '../models/user_model.dart';
 import '../presence_lauch/presence_page.dart';
 import '../widgets/custom_label.dart';
@@ -64,7 +66,14 @@ class TeacherHomePage extends StatelessWidget {
                             style: defaultTextlabelBoldStyle,
                           )),
                           IconButton(
-                              onPressed: (() {}),
+                              onPressed: (() =>
+                                  PersistentNavBarNavigator.pushDynamicScreen(
+                                    context,
+                                    screen: MaterialPageRoute(
+                                      builder: (context) => const LoginPage(),
+                                    ),
+                                    withNavBar: false,
+                                  )),
                               icon: const Icon(
                                 Icons.logout_rounded,
                                 size: 25,

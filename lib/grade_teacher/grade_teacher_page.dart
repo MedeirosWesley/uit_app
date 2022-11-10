@@ -28,8 +28,18 @@ class _GradeTeacherPageState extends State<GradeTeacherPage> {
     return Container(
         color: Colors.teal.shade300,
         child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+          const SizedBox(
+            width: 12.0,
+            height: 30,
+          ),
+          IconButton(
+              onPressed: (() => Navigator.pop(context)),
+              icon: const Icon(
+                Icons.arrow_back,
+                color: Colors.white,
+              )),
           Padding(
-            padding: const EdgeInsets.only(left: 12.0, top: 30, right: 100),
+            padding: const EdgeInsets.only(left: 15.0),
             child: Text(
               widget.subject.name.replaceFirst(' ', '\n'),
               style: defaultTextStyleTitlePage,
@@ -60,8 +70,33 @@ class _GradeTeacherPageState extends State<GradeTeacherPage> {
     for (var element in students) {
       list.add(_card(element));
     }
+
+    list.add(
+      Padding(
+        padding: const EdgeInsets.all(14),
+        child: SizedBox(
+          height: 55,
+          width: double.maxFinite,
+          child: ElevatedButton(
+            style: ButtonStyle(
+                shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                  RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(15),
+                  ),
+                ),
+                backgroundColor:
+                    MaterialStateProperty.all<Color>(Colors.teal.shade300)),
+            onPressed: () {},
+            child: const Text(
+              'Salvar',
+              style: TextStyle(color: Colors.white, fontSize: 18),
+            ),
+          ),
+        ),
+      ),
+    );
     list.add(const SizedBox(
-      height: 50,
+      height: 30,
     ));
     return list;
   }
@@ -132,6 +167,8 @@ class _GradeTeacherPageState extends State<GradeTeacherPage> {
                           maxLength: 2,
                           style: textStyleInput,
                           decoration: const InputDecoration(
+                            filled: true,
+                            fillColor: Colors.white,
                             counterText: '',
                             border: InputBorder.none,
                           ),

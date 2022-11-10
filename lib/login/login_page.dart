@@ -1,5 +1,9 @@
 import 'package:app_uit/consts.dart';
+import 'package:app_uit/home/home_page.dart';
+import 'package:app_uit/home/student_home_page.dart';
+import 'package:app_uit/home/teacher_home_page.dart';
 import 'package:flutter/material.dart';
+import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
@@ -71,7 +75,24 @@ class _LoginPageState extends State<LoginPage> {
                             ),
                             backgroundColor: MaterialStateProperty.all<Color>(
                                 Colors.teal.shade300)),
-                        onPressed: () {},
+                        onPressed: () =>
+                            PersistentNavBarNavigator.pushDynamicScreen(
+                          context,
+                          screen: MaterialPageRoute(
+                            builder: (context) =>
+                                const HomePage(page: StudentHomePage()),
+                          ),
+                          withNavBar: true,
+                        ),
+                        onLongPress: () =>
+                            PersistentNavBarNavigator.pushDynamicScreen(
+                          context,
+                          screen: MaterialPageRoute(
+                            builder: (context) =>
+                                const HomePage(page: TeacherHomePage()),
+                          ),
+                          withNavBar: true,
+                        ),
                         child: const Text(
                           'Login',
                           style: TextStyle(color: Colors.white, fontSize: 18),

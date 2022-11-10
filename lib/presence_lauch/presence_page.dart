@@ -21,14 +21,21 @@ class _PresencePageState extends State<PresencePage> {
     return Container(
         color: Colors.teal.shade300,
         child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+          const SizedBox(
+            width: 12.0,
+            height: 30,
+          ),
+          IconButton(
+              onPressed: (() => Navigator.pop(context)),
+              icon: const Icon(
+                Icons.arrow_back,
+                color: Colors.white,
+              )),
           Padding(
-            padding: const EdgeInsets.all(8.0),
+            padding: const EdgeInsets.only(left: 15.0),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const SizedBox(
-                  height: 30,
-                ),
                 Text(
                   widget.subject.name.replaceFirst(' ', '\n'),
                   style: defaultTextStyleTitlePage,
@@ -66,6 +73,30 @@ class _PresencePageState extends State<PresencePage> {
     for (var element in listStudents) {
       list.add(_getCard(element));
     }
+    list.add(
+      Padding(
+        padding: const EdgeInsets.all(14),
+        child: SizedBox(
+          height: 55,
+          width: double.maxFinite,
+          child: ElevatedButton(
+            style: ButtonStyle(
+                shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                  RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(15),
+                  ),
+                ),
+                backgroundColor:
+                    MaterialStateProperty.all<Color>(Colors.teal.shade300)),
+            onPressed: () {},
+            child: const Text(
+              'Salvar',
+              style: TextStyle(color: Colors.white, fontSize: 18),
+            ),
+          ),
+        ),
+      ),
+    );
     list.add(const SizedBox(
       height: 30,
     ));

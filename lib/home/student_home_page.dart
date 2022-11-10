@@ -3,9 +3,12 @@ import 'package:app_uit/consts.dart';
 import 'package:app_uit/models/user_model.dart';
 import 'package:app_uit/widgets/home_menu_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
 
+import '../financial/financial_page.dart';
 import '../grade_studant/grade_page_studant.dart';
-import '../protocols/protocols_view_page.dart';
+import '../login/login_page.dart';
+import '../protocols/protocols_overview_page.dart';
 
 class StudentHomePage extends StatefulWidget {
   const StudentHomePage({Key? key}) : super(key: key);
@@ -66,7 +69,14 @@ class _StudentHomePageState extends State<StudentHomePage> {
                       style: defaultTextlabelBoldStyle,
                     )),
                     IconButton(
-                        onPressed: (() {}),
+                        onPressed: (() =>
+                            PersistentNavBarNavigator.pushDynamicScreen(
+                              context,
+                              screen: MaterialPageRoute(
+                                builder: (context) => const LoginPage(),
+                              ),
+                              withNavBar: false,
+                            )),
                         icon: const Icon(
                           Icons.logout_rounded,
                           size: 25,
@@ -99,7 +109,7 @@ class _StudentHomePageState extends State<StudentHomePage> {
                       onTap: () => Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => const ProtocolViewPage(),
+                            builder: (context) => const ProtocolOverviewPage(),
                           )),
                     ),
                     HomeMenu(
@@ -115,11 +125,11 @@ class _StudentHomePageState extends State<StudentHomePage> {
                     HomeMenu(
                       icon: Icons.note_add_outlined,
                       title: 'Financeiro',
-                      label: 'Consultar boletos e mensalidades',
+                      label: 'Consultar boletos de mensalidades',
                       onTap: () => Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => const GradePage(),
+                            builder: (context) => const FinancialPage(),
                           )),
                     ),
                   ],

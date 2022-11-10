@@ -2,15 +2,16 @@ import 'package:app_uit/protocols/protocol_page.dart';
 import 'package:flutter/material.dart';
 
 import '../consts.dart';
+import 'select_protocol_page.dart';
 
-class ProtocolViewPage extends StatefulWidget {
-  const ProtocolViewPage({super.key});
+class ProtocolOverviewPage extends StatefulWidget {
+  const ProtocolOverviewPage({super.key});
 
   @override
-  State<ProtocolViewPage> createState() => _ProtocolViewPageState();
+  State<ProtocolOverviewPage> createState() => _ProtocolOverviewPageState();
 }
 
-class _ProtocolViewPageState extends State<ProtocolViewPage> {
+class _ProtocolOverviewPageState extends State<ProtocolOverviewPage> {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -53,7 +54,7 @@ class _ProtocolViewPageState extends State<ProtocolViewPage> {
                       onTap: () => Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => const ProtocolPage(),
+                            builder: (context) => const SelectProtocolPage(),
                           )),
                       child: Container(
                           margin: const EdgeInsets.only(
