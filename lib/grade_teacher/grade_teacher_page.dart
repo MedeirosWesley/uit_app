@@ -1,13 +1,9 @@
 import 'package:app_uit/models/student_class_model.dart';
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
 
 import '../consts.dart';
-import '../models/student_model.dart';
-import '../models/subject_student_model.dart';
 import '../models/subject_teacher_model.dart';
-import '../models/user_model.dart';
 import '../widgets/custom_label.dart';
 
 class GradeTeacherPage extends StatefulWidget {
@@ -22,8 +18,6 @@ class _GradeTeacherPageState extends State<GradeTeacherPage> {
   List<StudentClassModel> listStudents = StudentClassModel.getTeste();
   @override
   Widget build(BuildContext context) {
-    List<StudentClassModel> listStudents = StudentClassModel.getTeste();
-
     Size size = MediaQuery.of(context).size;
     return Container(
         color: Colors.teal.shade300,
@@ -86,7 +80,9 @@ class _GradeTeacherPageState extends State<GradeTeacherPage> {
                 ),
                 backgroundColor:
                     MaterialStateProperty.all<Color>(Colors.teal.shade300)),
-            onPressed: () {},
+            onPressed: () {
+              Navigator.pop(context);
+            },
             child: const Text(
               'Salvar',
               style: TextStyle(color: Colors.white, fontSize: 18),
@@ -154,9 +150,9 @@ class _GradeTeacherPageState extends State<GradeTeacherPage> {
                 children: [
                   Container(
                     margin: const EdgeInsets.all(8),
-                    padding: const EdgeInsets.symmetric(horizontal: 16),
+                    padding: const EdgeInsets.symmetric(horizontal: 6),
                     height: 70,
-                    width: 70,
+                    width: 100,
                     decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(10),
                         border: Border.all(color: Colors.teal)),
@@ -164,7 +160,7 @@ class _GradeTeacherPageState extends State<GradeTeacherPage> {
                       child: Center(
                         child: TextField(
                           keyboardType: TextInputType.number,
-                          maxLength: 2,
+                          maxLength: 4,
                           style: textStyleInput,
                           decoration: const InputDecoration(
                             filled: true,

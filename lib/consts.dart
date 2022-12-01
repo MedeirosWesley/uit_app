@@ -22,7 +22,7 @@ TextStyle defaultTextStyleInput = GoogleFonts.lato(
 TextStyle textStyleInput = GoogleFonts.lato(
     color: Colors.black,
     fontWeight: FontWeight.bold,
-    fontSize: 26,
+    fontSize: 24,
     decoration: TextDecoration.none);
 TextStyle defaultTextStyleUserTitle = GoogleFonts.lato(
     color: Colors.white, fontSize: 14, decoration: TextDecoration.none);

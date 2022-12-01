@@ -226,7 +226,9 @@ class UserPage extends StatelessWidget {
                               ),
                               backgroundColor: MaterialStateProperty.all<Color>(
                                   Colors.teal.shade300)),
-                          onPressed: () {},
+                          onPressed: () {
+                            Navigator.pop(context);
+                          },
                           child: const Text(
                             'Salvar',
                             style: TextStyle(color: Colors.white, fontSize: 18),

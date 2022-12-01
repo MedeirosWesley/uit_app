@@ -61,9 +61,19 @@ class TeacherHomePage extends StatelessWidget {
                             ),
                           ),
                           Expanded(
-                              child: Text(
-                            user.name,
-                            style: defaultTextlabelBoldStyle,
+                              child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                user.name,
+                                style: defaultTextlabelBoldStyle,
+                              ),
+                              Text(
+                                user.ciu,
+                                style: defaultTextlabelBoldStyle,
+                              ),
+                            ],
                           )),
                           IconButton(
                               onPressed: (() =>
