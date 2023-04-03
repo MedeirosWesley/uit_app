@@ -144,7 +144,7 @@ class _PresencePageState extends State<PresencePage> {
               height: 50,
               width: 50,
               decoration: BoxDecoration(
-                  color: Colors.white,
+                  color: Colors.grey,
                   borderRadius: BorderRadius.circular(20),
                   image: DecorationImage(
                       image: NetworkImage(student.imageProfile))),
